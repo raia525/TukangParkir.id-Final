@@ -83,7 +83,9 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
 
 # ----------------
-# 12. Expose port 80 & Start Apache
+# 12. Expose port 80 & Start Apache with Auto-Migration
 # ----------------
 EXPOSE 80
-CMD ["apache2-foreground"]
+
+# Menjalankan migrasi database otomatis sebelum menyalakan server Apache
+CMD php artisan migrate --force && apache2-foreground
