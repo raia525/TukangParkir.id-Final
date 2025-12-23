@@ -1,5 +1,5 @@
 # ================================
-# Laravel Production Dockerfile - Tailwind/Vite Support
+# Laravel Production Dockerfile - Migration & Seeder Support
 # ================================
 FROM php:8.2-apache
 
@@ -59,22 +59,22 @@ WORKDIR /var/www/html
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # ----------------
-# 8. Copy SELURUH Project Terlebih Dahulu
+# 8. Copy SELURUH Project Terlebih Dahulu (Agar seeder terbawa)
 # ----------------
-COPY . .
+COPY . . [cite: 5]
 
 # ----------------
 # 9. Install PHP dependencies
 # ----------------
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-interaction
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-interaction 
 
 # ----------------
-# 10. Install Node dependencies & Build Assets
+# 10. Install Node dependencies & Build Assets (Tailwind Scan)
 # ----------------
 RUN if [ -f package.json ]; then \
     npm install && \
     npm run build; \
-    fi
+    fi [cite: 6]
 
 # ----------------
 # 11. Set Laravel permissions
@@ -83,9 +83,10 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
 
 # ----------------
-# 12. Expose port 80 & Start Apache with Auto-Migration
+# 12. Expose port 80 & Start Apache with Auto-Migration + Seeder
 # ----------------
 EXPOSE 80
 
-# Menjalankan migrasi database otomatis sebelum menyalakan server Apache
-CMD php artisan migrate --force && apache2-foreground
+# Menjalankan migrasi DAN seeder otomatis sebelum server Apache aktif.
+# Gunakan --force karena di lingkungan production.
+CMD php artisan migrate --force && php artisan db:seed --force && apache2-foreground
