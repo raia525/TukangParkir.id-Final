@@ -59,22 +59,22 @@ WORKDIR /var/www/html
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # ----------------
-# 8. Copy SELURUH Project Terlebih Dahulu (Agar seeder terbawa)
+# 8. Copy SELURUH Project
 # ----------------
-COPY . . [cite: 5]
+COPY . .
 
 # ----------------
 # 9. Install PHP dependencies
 # ----------------
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-interaction 
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-interaction
 
 # ----------------
-# 10. Install Node dependencies & Build Assets (Tailwind Scan)
+# 10. Install Node dependencies & Build Assets
 # ----------------
 RUN if [ -f package.json ]; then \
     npm install && \
     npm run build; \
-    fi [cite: 6]
+    fi
 
 # ----------------
 # 11. Set Laravel permissions
@@ -87,6 +87,5 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # ----------------
 EXPOSE 80
 
-# Menjalankan migrasi DAN seeder otomatis sebelum server Apache aktif.
-# Gunakan --force karena di lingkungan production.
+# Menjalankan migrasi DAN seeder otomatis sebelum server Apache aktif
 CMD php artisan migrate --force && php artisan db:seed --force && apache2-foreground
