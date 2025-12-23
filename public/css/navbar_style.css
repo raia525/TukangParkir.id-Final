@@ -1,0 +1,48 @@
+.navbar {
+  background: #ffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 60px;
+  width: auto;
+  transform: scale(1.8);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(2);
+}
+
+.nav-link {
+  font-weight: 500;
+  color: black !important;
+  transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #003DB9 !important;
+}
+
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #003DB9, #999999);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.profile-circle:hover {
+  transform: scale(1.1);
+}

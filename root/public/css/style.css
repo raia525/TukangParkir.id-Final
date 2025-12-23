@@ -1,0 +1,319 @@
+body {
+    background: linear-gradient(135deg, #e8ecf8 0%, #f5f7fb 100%);
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+/* Barcode - untuk halaman lain */
+.barcode {
+    font-family: "Free 3 of 9";
+    font-size: 48px;
+    display: inline-block;
+    letter-spacing: 3px;
+}
+
+/* Card General */
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(133, 6, 224, 0.2);
+}
+
+/* Text Gradient */
+.text-gradient {
+    background: linear-gradient(90deg, #003DB9, #7c8ba3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Judul Gradient - untuk halaman lain */
+.title-gradient {
+    background: linear-gradient(90deg, #500288, #8506e0);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/* Tombol Gradient */
+.btn-gradient {
+    background: linear-gradient(90deg, #003db9, #586f9e);
+    border: none;
+    color: #fff;
+    transition: 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(90deg, #0047d4, #6a7fa8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 61, 185, 0.3);
+    color: #fff;
+}
+
+.bg-tukangparkir {
+    background: linear-gradient(0deg, #003db9, #586f9e);
+    color: white;
+}
+
+.weather-card-main {
+    background: linear-gradient(135deg, #1e5bc6 0%, #2b6fd6 50%, #4d8fe8 100%);
+    box-shadow: 0 10px 30px rgba(30, 91, 198, 0.3);
+    min-height: 320px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(30, 91, 198, 0.4);
+}
+
+.weather-card-secondary {
+    background: linear-gradient(135deg, #2d6fd8 0%, #3d7fe5 50%, #5a9aef 100%);
+    box-shadow: 0 10px 30px rgba(45, 111, 216, 0.3);
+    min-height: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card-secondary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(45, 111, 216, 0.4);
+}
+
+/* Location Badge */
+.location-badge {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 60px;
+}
+
+.info-badge {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.temperature-display {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+}
+
+/* Weather Value Container */
+.weather-value-container {
+    position: relative;
+    z-index: 2;
+    margin-top: 80px;
+}
+
+.weather-icon-bg {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 250px;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.weather-icon-small {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 120px;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+/* Date/Time Container */
+.datetime-container {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Parking Grid - untuk halaman lain */
+.parking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+}
+
+.slot-box {
+    width: 100%;     /* ikut lebar column grid */
+    height: 240px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+
+.slot-green {
+    background-color: var(--bs-success);
+}
+
+.slot-yellow {
+    background-color: #E3FF00;
+}
+
+.slot-yellow .car-icon {
+    filter: brightness(0);
+}
+
+
+.slot-red {
+    background-color: var(--bs-danger);
+}
+
+.slot-blue {
+    background-color: var(--bs-primary);
+}
+
+.car-icon {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 70%;         /* default untuk desktop/tablet */
+    height: auto;
+    max-width: 110px;
+    pointer-events: none; /* biar gambar tidak ganggu klik */
+}
+
+/* HP kecil (≤ 480px) */
+@media (max-width: 480px) {
+    .car-icon {
+        width: 45%;     /* jauh lebih kecil */
+        max-width: 60px;
+        top: 15%;       /* posisi lebih pas di slot kecil */
+    }
+}
+
+/* HP medium (≤ 768px) */
+@media (max-width: 768px) {
+    .car-icon {
+        width: 55%;
+        max-width: 80px;
+        top: 15%;
+    }
+}
+
+.slot-label {
+    background: rgba(0,0,0,0.4);
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.legend-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 6px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+/* ==== FIX POSITION VALUE DI POJOK KANAN BAWAH ==== */
+.weather-value-bottom {
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+    z-index: 5;
+}
+
+/* Untuk angka temperature besar */
+.temperature-display,
+.weather-value-container {
+    margin-top: 0 !important;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .weather-card-main,
+    .weather-card-secondary {
+        min-height: 250px;
+    }
+    
+    .location-badge,
+    .info-badge {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+    
+    .weather-icon-bg {
+        font-size: 150px;
+    }
+    
+    .weather-icon-small {
+        font-size: 90px;
+    }
+    
+    .display-1 {
+        font-size: 3.5rem;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .weather-card-main,
+    .weather-card-secondary {
+        min-height: 220px;
+    }
+    
+    .display-1 {
+        font-size: 3rem;
+    }
+    
+    .display-3 {
+        font-size: 2rem;
+    }
+    
+    .parking-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 8px;
+    }
+    
+    .slot-box {
+        width: 70px;
+        height: 85px;
+    }
+}
